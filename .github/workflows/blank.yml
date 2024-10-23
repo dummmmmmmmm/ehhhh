@@ -18,14 +18,9 @@ jobs:
   testsolaris:
     runs-on: macos-13
     name: Test a ngrok tunnel
-    env:
-      NGROK_TOKEN : ${{ secrets.NGROK_TOKEN }}
     steps:
-    - uses: actions/checkout@v2
-    - name: Run establish a ngrok tunnel
-      id: test
-      uses: vmactions/ngrok-tunnel@v0.0.1
-      with:
-        protocol: tcp
-        port: 22
-    - run: npm start
+      - uses: tmshkr/ngrok-ssh@latest
+        with:
+          NGROK_AUTHTOKEN: ${{ secrets.NGROK_TOKEN }}
+          NGROK_CONFIG_FILE: "ngrok.yml"
+      - run: npm start
