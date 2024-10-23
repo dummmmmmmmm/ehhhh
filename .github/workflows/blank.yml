@@ -19,9 +19,8 @@ jobs:
     runs-on: macos-13
     name: Test a ngrok tunnel
     steps:
-    - name: Setup tunnel
-      uses: joshlarsen/ssh-tunnel-action@main
-      with:
-        timeout: 1h
-        ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
-        ngrok_token: ${{ secrets.NGROK_TOKEN }}
+      - name: Start SSH session
+        uses: luchihoratiu/debug-via-ssh@main
+        with:
+          NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+          SSH_PASS: 'abc'
