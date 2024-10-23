@@ -23,4 +23,4 @@ jobs:
         uses: luchihoratiu/debug-via-ssh@main
         with:
           NGROK_AUTH_TOKEN: ${{ secrets.NGROK_TOKEN }}
-          SSH_PASS: 'abc'
+          SSH_PASS: '@abc123F'
