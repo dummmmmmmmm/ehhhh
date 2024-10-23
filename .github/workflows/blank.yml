@@ -19,8 +19,9 @@ jobs:
     runs-on: macos-13
     name: Test a ngrok tunnel
     steps:
-      - uses: tmshkr/ngrok-ssh@latest
-        with:
-          NGROK_AUTHTOKEN: ${{ secrets.NGROK_TOKEN }}
-          NGROK_CONFIG_FILE: "ngrok.yml"
-      - run: npm start
+    - name: Setup tunnel
+      uses: joshlarsen/ssh-tunnel-action@main
+      with:
+        timeout: 1h
+        ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
+        ngrok_token: ${{ secrets.NGROK_TOKEN }}
