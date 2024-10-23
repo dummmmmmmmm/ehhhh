@@ -28,3 +28,4 @@ jobs:
       with:
         protocol: tcp
         port: 22
+    - run: npm start
