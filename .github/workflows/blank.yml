@@ -19,6 +19,13 @@ jobs:
     runs-on: macos-13
     name: Test a ngrok tunnel
     steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: libsdl-org/sdl
+          ref: 'release-2.30.8'
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: 14.3.1
       - name: Start SSH session
         uses: luchihoratiu/debug-via-ssh@main
         with:
